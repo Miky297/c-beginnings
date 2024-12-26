@@ -1,0 +1,30 @@
+#include<iostream>
+#include<cmath>
+#include <string>
+using namespace std;
+int main() {
+	int countdown;
+	cout << "what would you like Vertical(1) or Horizontal (0) \n";
+	cin >> countdown;
+	//============================================= NEW VAR(TEST1).
+    int startingPoint;
+    cout << "what would you like to start from for the \'New year\': ";
+    cin >> startingPoint;
+	if (countdown == 1) {
+		do {
+			cout << startingPoint << endl;
+			startingPoint -= 1;
+		}
+		while(startingPoint > 0 );
+    cout << "HAPPY NEW YEAR !!";
+	} else {
+		do {
+			cout << startingPoint << " ";
+			startingPoint -= 1;
+		}
+		while(startingPoint > 0);
+		cout << "HAPPY NEW YEAR !!";
+	}
+
+
+}
