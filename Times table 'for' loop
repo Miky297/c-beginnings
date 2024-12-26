@@ -1,0 +1,13 @@
+#include<iostream>
+#include<cmath>
+#include <string>
+using namespace std;
+int main() {
+	int timesTable;
+	cout << "enter the \'times table\' you want here: ";
+	cin >> timesTable;
+	for( int i = 1; i<=10; i++){
+		cout << timesTable * i << endl;
+
+	}
+}
