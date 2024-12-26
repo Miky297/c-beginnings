@@ -1,0 +1,15 @@
+#include<iostream>
+#include<cmath>
+#include <string>
+using namespace std;
+int main() {
+int i = 1;
+int userNum;
+cout << "enter number here: ";
+cin >> userNum;
+do{
+cout << i * userNum << endl;
+i++;
+}
+while(i <= 10);
+}
