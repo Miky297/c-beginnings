@@ -9,7 +9,7 @@ void func1() {
 	for(i = 0; i <= endingNum; i++)
 		if ( i % 3 == 0 && i % 5 == 0) {
 			cout << "BitcoinMined" << endl;
-		} else if( i & 3 == 0) {
+		} else if( i % 3 == 0) {
 			cout << " - 2" << endl;
 		} else if (i % 5 == 0) {
 			cout << " + 2" << endl;;
