@@ -1,0 +1,15 @@
+names = ["adam", "Scott", "Michael", "Andrew", "Mark", "Fernando", "Faith", "Steve", "Lee", "Amani", "Liv", "Nick A", "James", "Jake", "Brett", "Graham", "Fraser", "Jacob", "Chelsea", "Phil", "George", "Charley", "Emma", "Steph"]
+items = input("name needed from list: ")
+index = 0
+found = False 
+#-------
+while index < len(names) and found == False:
+    if names[index] == items:
+       found = True
+    else:
+       index = index + 1
+if found == True:
+   print("found", index)
+else:
+   print("not found")
+   
