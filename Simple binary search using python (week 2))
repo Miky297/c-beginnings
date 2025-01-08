@@ -1,0 +1,44 @@
+names = [
+    "adam",
+    "Scott",
+    "Michael",
+    "Andrew",
+    "Mark",
+    "Fernando",
+    "Faith",
+    "Steve",
+    "Lee",
+    "Amani",
+    "Liv",
+    "Nick A",
+    "James",
+    "Jake",
+    "Brett",
+    "Graham",
+    "Fraser",
+    "Jacob",
+    "Chelsea",
+    "Phil",
+    "George",
+    "Charley",
+    "Emma",
+    "Steph",
+]
+items = input("name needed from list: ")
+found = False
+first = 0
+last = len(names) - 1
+# -----------------------
+while first < last and found == False:
+    midpoint = (first + last) // 2
+if names[midpoint] == items:
+    found = True
+else:
+    if names[midpoint] < items:
+        first = midpoint + 1
+    else:
+        last = midpoint - 1
+if found == True:
+    print("item found: ", first)
+else:
+    print("item not in given list, try again please.")
