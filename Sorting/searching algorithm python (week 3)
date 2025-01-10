@@ -1,0 +1,68 @@
+List = [
+    86,
+    87,
+    88,
+    86,
+    87,
+    85,
+    86,
+    32,
+    111,
+    138,
+    28,
+    59,
+    77,
+    97,
+    -12,
+    -9,
+    -1928,
+    -10,
+    0,
+    193,
+]
+# ----------------
+n = len(List)
+swapped = True
+# ----------------
+while n > 0 and swapped == True:
+    swapped = False
+    n = n - 1
+    for index in range(0, n):
+        # ----------------
+        print("sorting list: ", List)
+
+        # ----------------
+        if List[index] > List[index + 1]:
+            temp = List[index]
+            List[index] = List[index + 1]
+            List[index + 1] = temp
+        swapped = True
+
+print("sorted list: ", List)
+# ---------------
+print(
+    """
+"""
+)
+# ---------------
+items = int(input("item needed from list: "))
+First = 0
+Last = len(List) - 1
+found = False
+# ---------------
+while First <= Last and found == False:
+    midp = (First + Last) // 2
+    if List[midp] == items:
+        found = True
+    else:
+        if List[midp] < items:
+            First = midp + 1
+        else:
+            Last = midp - 1
+    if found == True:
+        print("item found", items, "At index:", First)
+    else:
+        if not found:
+            print("search agent is searching")
+        else:
+            print(item, "not found ")
