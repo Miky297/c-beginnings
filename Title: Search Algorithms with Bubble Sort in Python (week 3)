@@ -1,0 +1,89 @@
+def BinarySearch(List, First, Last, items):
+    found = False
+    while First <= Last and not found:
+        midp = (First + Last) // 2
+        if List[midp] == items:
+            found = True
+            print("Item found:", items, "At index:", midp)
+        elif List[midp] < items:
+            First = midp + 1
+        else:
+            Last = midp - 1
+
+    if not found:
+        print(items, "not found in the list.")
+
+
+# ---------------
+
+List = [
+    86,
+    87,
+    88,
+    86,
+    87,
+    85,
+    86,
+    32,
+    111,
+    138,
+    28,
+    59,
+    77,
+    97,
+    -12,
+    -9,
+    -1928,
+    -10,
+    0,
+    193,
+]
+
+# Bubble sort:
+n = len(List)
+print("List contains", n, "items:")
+
+swapped = True
+# Bubble sort loop:
+while n > 0 and swapped:
+    swapped = False
+    n -= 1
+    for index in range(0, n):
+        print("Sorting: ", List)
+        print(
+            """ 
+"""
+        )
+        if List[index] > List[index + 1]:
+            List[index], List[index + 1] = List[index + 1], List[index]
+            swapped = True
+
+print("Sorted list:", List)
+print("")
+
+#===================================================
+items = int(input("Item needed from list: "))
+First = 0
+Last = len(List) - 1
+found = False
+
+LorBI = input(
+    "WOULD YOU LIKE TO LINEAR SEARCH(L) OR BINARY(B) SEARCH THE GIVEN ARRAY? "
+)
+
+if LorBI == "B":
+    # Binary Search
+    BinarySearch(List, First, Last, items)
+    print("O(log n)")
+else:
+    # Linear Search
+    while First < len(List) and not found:
+        if List[First] == items:
+            found = True
+            print("Item found at", items, "at index:", First)
+        else:
+            First += 1
+
+    if not found:
+        print(items, "not found in the list.")
+        print("O(n)")
