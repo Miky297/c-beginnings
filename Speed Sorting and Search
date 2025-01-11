@@ -1,0 +1,71 @@
+#Tickets based on speeds:
+
+#bubble_sort:
+
+def bubble_sort(n,uk_highway_speeds):
+    swapped = True
+    while n > 0 and swapped:
+        swapped = False
+        for index in range(0,n-1):
+            if uk_highway_speeds[index] > uk_highway_speeds[index + 1]:
+                uk_highway_speeds[index],uk_highway_speeds[index + 1] = uk_highway_speeds[index + 1],uk_highway_speeds[index]
+                swapped = True
+        n -= 1
+    return uk_highway_speeds
+
+
+#binary_search:
+
+def binary_search(first,last,items,uk_highway_speeds):
+    found = False
+    while first <= last and not found:
+        midpoint = (first + last) // 2
+        if uk_highway_speeds[midpoint] == items:
+            found = True
+            return midpoint
+        elif uk_highway_speeds[midpoint] < items:
+            first = midpoint + 1 
+        else:
+            last = midpoint - 1 
+    return -1
+
+
+#statistics:
+import numpy
+uk_highway_speeds = [60, 65, 70, 68, 62, 64, 66, 70, 69, 65, 63, 67, 60, 68, 64, 62, 70, 66, 65, 63, 69, 68, 64, 62, 70, 65]
+#---- Subsection
+n = len(uk_highway_speeds)
+xbar = numpy.mean(uk_highway_speeds)
+rhoh = numpy.std(uk_highway_speeds)
+#---- End Subsection:
+
+
+#main_program:
+
+items = int(input("enter a speed to search for: "))
+#-----Subsection
+#Calling Functions:
+
+#bubble_sort:
+uk_highway_speeds = bubble_sort(n,uk_highway_speeds)
+print("sorted list:",uk_highway_speeds)
+
+#binary_search:
+index = binary_search(0,n - 1,items,uk_highway_speeds)
+#-----End Subsection
+
+#main_programCarryOn:
+#selection_logic:
+if index != -1:
+    print(items,"found at index:",index)
+else:
+    print(items,"not within given list")
+#-----------
+
+#selection_logic
+if items > xbar + rhoh:
+    print("ticket warranted: (Fast)")
+elif items < xbar - rhoh:
+    print("ticket warranted: (slow)")
+else:
+    print("no ticket condemned: Hit {enter} to Exit.")
