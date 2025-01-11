@@ -1,0 +1,79 @@
+# Insertion Sort:
+def insertion_sort(n, students_data_base):
+    for index in range(1, n):
+        current = students_data_base[index]
+        index_j = index
+        while (
+            index_j > 0 and students_data_base[index_j - 1]["grade"] > current["grade"]
+        ):
+            students_data_base[index_j] = students_data_base[index_j - 1]  # Fixed line
+            index_j = index_j - 1  # Fixed the assignment to move the pointer back
+        students_data_base[index_j] = current
+    return students_data_base
+
+
+# Binary Search:
+def binary_search(first_index, last_index, items_user, students_data_base):
+    found = False
+    while first_index <= last_index and not found:
+        midpoint_of_base = (first_index + last_index) // 2
+        if students_data_base[midpoint_of_base]["grade"] == items_user:
+            found = True
+            return midpoint_of_base
+        elif students_data_base[midpoint_of_base]["grade"] < items_user:
+            first_index = midpoint_of_base + 1
+        else:
+            last_index = midpoint_of_base - 1
+    return -1
+
+
+# Statistics:
+import numpy
+
+# Data base of students
+students_data_base = [
+    {"name": "Alice", "grade": 85},
+    {"name": "Bob", "grade": 92},
+    {"name": "Charlie", "grade": 78},
+    {"name": "David", "grade": 61},
+    {"name": "Eve", "grade": 55},
+    {"name": "Frank", "grade": 88},
+    {"name": "Grace", "grade": 95},
+    {"name": "Hannah", "grade": 73},
+]
+
+# Extract grades for statistical calculations
+grades = [student["grade"] for student in students_data_base]
+
+# Calculate mean and standard deviation based on grades
+mean = numpy.mean(grades)
+standard_deviation = numpy.std(grades)
+
+# Declare n (number of students)
+n = len(students_data_base)
+
+# Main Program:
+
+# Get user input
+items_user = int(input("Search students by grade: "))
+
+# Sort the students by grade using insertion sort
+students_data_base = insertion_sort(n, students_data_base)
+print("Sorted students by grade:", students_data_base)
+
+# Perform binary search to find the student's grade
+index = binary_search(0, n - 1, items_user, students_data_base)
+
+# Check if the grade was found
+if index != -1:
+    print(f"Grade {items_user} found at index: {index}")
+else:
+    print(f"Grade {items_user} not found. Press Enter to Exit")
+
+# Categorizing based on the grade, mean, and standard deviation
+if items_user > mean + standard_deviation:
+    print("Student grade: A (No extra classes needed).")
+elif items_user < mean - standard_deviation:
+    print("Student grade: D (Extra classes needed).")
+else:
+    print("Student grade: B/C (No extra classes needed).")
